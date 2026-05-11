@@ -15,15 +15,17 @@
 
 <header class="navbar">
     <div class="nav-container">
-        <div class="logo" onclick="showStage(1)">
+        <div class="logo" onclick="window.location.href='../index.html'">
             WMSU <span>Navigator</span>
         </div>
 
         <nav>
             <ul>
-                <li><button onclick="showStage(1)">Home</button></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="../html/Preview.html">Preview</a></li>
                 <li><button onclick="showStage(2)">Map</button></li>
+                <li><a href="../index.html#how-to-use">Tutorial</a></li>
+                <li><a href="Admin-Login-Page.html">Admin</a></li>
                 <li><a href="../index.html">Logout</a></li>
             </ul>
         </nav>
@@ -124,7 +126,7 @@
                         teacher training programs.
                     </p>
 
-                    <button class="primary-btn">
+                    <button class="primary-btn" id="view-on-map-btn">
                         View Building
                     </button>
                 </div>
@@ -145,7 +147,8 @@ const buildings = {
         shortName:"CTE",
         desc:"The College of Teacher Education is the center of excellence in pre-service and in-service teacher training programs.",
         img:"../assets/images/CTE.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     coe:{
@@ -153,7 +156,8 @@ const buildings = {
         shortName:"COE",
         desc:"Engineering programs including Civil, Mechanical, Electrical and Chemical Engineering.",
         img:"../assets/images/coe.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     coe2:{
@@ -161,7 +165,8 @@ const buildings = {
         shortName:"COE Annex",
         desc:"Extension facility of the College of Engineering.",
         img:"../assets/images/coe.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     cla:{
@@ -169,7 +174,8 @@ const buildings = {
         shortName:"CLA",
         desc:"Programs in Social Sciences, Humanities and Communication.",
         img:"../assets/images/cla.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     claw:{
@@ -177,7 +183,8 @@ const buildings = {
         shortName:"Law",
         desc:"Provides rigorous legal education.",
         img:"../assets/images/law.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     cpads:{
@@ -185,7 +192,8 @@ const buildings = {
         shortName:"CPADS",
         desc:"Focuses on governance and public service.",
         img:"../assets/images/cpads.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     elem:{
@@ -193,7 +201,8 @@ const buildings = {
         shortName:"Elementary",
         desc:"Laboratory elementary school for teacher education.",
         img:"../assets/images/elem.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     research:{
@@ -201,7 +210,8 @@ const buildings = {
         shortName:"Research",
         desc:"Research laboratories and research offices.",
         img:"../assets/images/research.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     library:{
@@ -209,7 +219,8 @@ const buildings = {
         shortName:"Library",
         desc:"Main university library with books and digital resources.",
         img:"../assets/images/library.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     gymnasium:{
@@ -217,7 +228,8 @@ const buildings = {
         shortName:"Gymnasium",
         desc:"Venue for sports events and assemblies.",
         img:"../assets/images/gymnasium.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     coveredcourt:{
@@ -225,7 +237,8 @@ const buildings = {
         shortName:"Covered Court",
         desc:"Multi-purpose sports court.",
         img:"../assets/images/coveredcourt.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     auditorium:{
@@ -233,7 +246,8 @@ const buildings = {
         shortName:"Auditorium",
         desc:"Venue for university events and ceremonies.",
         img:"../assets/images/auditorium.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     canteen:{
@@ -241,7 +255,8 @@ const buildings = {
         shortName:"Canteen",
         desc:"Food facility for students and staff.",
         img:"../assets/images/canteen.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     admin:{
@@ -249,7 +264,8 @@ const buildings = {
         shortName:"Admin",
         desc:"Main administrative offices of WMSU.",
         img:"../assets/images/admin.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     misto:{
@@ -257,7 +273,8 @@ const buildings = {
         shortName:"MISTO",
         desc:"Handles ICT infrastructure and systems.",
         img:"../assets/images/misto.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     upres:{
@@ -265,7 +282,8 @@ const buildings = {
         shortName:"UPRESS",
         desc:"University publication and printing office.",
         img:"../assets/images/upress.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     landbank:{
@@ -273,7 +291,8 @@ const buildings = {
         shortName:"Landbank",
         desc:"On-campus banking services.",
         img:"../assets/images/landbank.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     storage:{
@@ -281,7 +300,8 @@ const buildings = {
         shortName:"Storage",
         desc:"Storage facility for university offices.",
         img:"../assets/images/storage.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     property:{
@@ -289,7 +309,8 @@ const buildings = {
         shortName:"Property Office",
         desc:"Handles university assets and inventory.",
         img:"../assets/images/property.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     carpentry:{
@@ -297,7 +318,8 @@ const buildings = {
         shortName:"Carpentry",
         desc:"Maintenance and furniture fabrication workshop.",
         img:"../assets/images/carpentry.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     gate2:{
@@ -305,7 +327,8 @@ const buildings = {
         shortName:"Gate 2",
         desc:"Secondary entrance gate.",
         img:"../assets/images/gate2.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     gate4:{
@@ -313,7 +336,8 @@ const buildings = {
         shortName:"Gate 4",
         desc:"Northern gate access.",
         img:"../assets/images/gate4.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     gate5:{
@@ -321,7 +345,8 @@ const buildings = {
         shortName:"Gate 5",
         desc:"Alternate campus entrance.",
         img:"../assets/images/gate5.png",
-        campus:"Campus A"
+        campus:"Campus A",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     ccs:{
@@ -329,7 +354,35 @@ const buildings = {
         shortName:"CCS",
         desc:"Center of technology and innovation.",
         img:"../assets/images/ccs.png",
-        campus:"Campus B"
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
+    },
+
+    crim:{
+        title:"College of Criminology and Justice Education",
+        shortName:"Criminology",
+        desc:"Programs focused on criminology, law enforcement, and justice education.",
+        img:"../assets/images/criminology.png",
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
+    },
+
+    ais:{
+        title:"College of Asian and Islamic Studies",
+        shortName:"Islamic Studies",
+        desc:"Academic programs exploring Asian cultures and Islamic education.",
+        img:"../assets/images/B.png",
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
+    },
+
+    ils:{
+        title:"Integrated Laboratory School (High School)",
+        shortName:"ILS Building",
+        desc:"The secondary education laboratory school of the university.",
+        img:"../assets/images/B.png",
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     csm:{
@@ -337,7 +390,8 @@ const buildings = {
         shortName:"CSM",
         desc:"Science and mathematics programs.",
         img:"../assets/images/csm.png",
-        campus:"Campus B"
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
 
     canteenB:{
@@ -345,7 +399,8 @@ const buildings = {
         shortName:"Canteen B",
         desc:"Food facility for Campus B.",
         img:"../assets/images/canteen.png",
-        campus:"Campus B"
+        campus:"Campus B",
+        mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     }
 };
 
@@ -451,6 +506,18 @@ function showPreview(id){
 
     document.getElementById('detail-desc').innerText =
     b.desc;
+
+    // Logic for "View Building" button
+    const viewBtn = document.getElementById('view-on-map-btn');
+    viewBtn.onclick = () => {
+        // Scroll the map into view (especially useful on mobile layouts)
+        document.getElementById('main-map-iframe').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // If a specific MappedIn deep link is provided, update the iframe src
+        if (b.mapUrl) {
+            document.getElementById('main-map-iframe').src = b.mapUrl;
+        }
+    };
 }
 </script>
 

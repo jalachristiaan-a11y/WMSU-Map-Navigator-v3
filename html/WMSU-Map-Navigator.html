@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WMSU Navigator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/WMSU-Map-Navigator.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <div class="logo" onclick="showStage(1)">
+            WMSU <span>Navigator</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><button onclick="showStage(1)">Home</button></li>
+                <li><a href="../html/Preview.html">Preview</a></li>
+                <li><button onclick="showStage(2)">Map</button></li>
+                <li><a href="../index.html">Logout</a></li>
+            </ul>
+        </nav>
+
+        <button class="nav-btn" onclick="showStage(2)">
+            Explore Campus
+        </button>
+    </div>
+</header>
+
+<!-- STAGE 1 -->
+<section id="stage-1" class="stage active">
+
+    <div class="hero-simple">
+        <span class="hero-tag">Smart Campus Navigation</span>
+        <h1>Navigate WMSU <span>Smarter</span></h1>
+    </div>
+
+    <div class="home-intro">
+        <p>Choose your destination to begin. Explore <strong>Campus A</strong> or <strong>Campus B</strong> to access interactive maps and building directories.</p>
+    </div>
+
+    <div class="campus-grid">
+
+        <div class="campus-card" onclick="selectCampus('Campus A')">
+            <img src="../assets/images/A.png">
+            <div class="campus-overlay">
+                <h2>Campus A</h2>
+                <p>Main Campus</p>
+            </div>
+        </div>
+
+        <div class="campus-card" onclick="selectCampus('Campus B')">
+            <img src="../assets/images/B.png">
+            <div class="campus-overlay">
+                <h2>Campus B</h2>
+                <p>Technology Campus</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STAGE 2 -->
+<section id="stage-2" class="stage">
+
+    <main class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <button class="back-btn" onclick="showStage(1)">
+                <i class="fa-solid fa-arrow-left"></i>
+                Change Campus
+            </button>
+
+            <h2 id="selected-campus-title">Campus Directory</h2>
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="directory-search" placeholder="Search building...">
+            </div>
+
+            <div id="directory-list" class="scroll-list"></div>
+
+        </aside>
+
+        <!-- PREVIEW -->
+        <section class="preview-area" id="map-nav">
+
+            <!-- IFRAME MAP -->
+            <div class="static-map-box">
+
+                <iframe
+                    id="main-map-iframe"
+                    src="https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <!-- BUILDING DETAIL -->
+            <div id="building-detail-card" class="detail-card hidden">
+
+                <div class="detail-img-wrap" id="detail-img-wrap">
+                    <img src="../assets/images/CTE.png">
+                </div>
+
+                <div class="detail-info">
+                    <h3 id="detail-name">
+                        College of Teacher Education
+                    </h3>
+
+                    <p id="detail-desc">
+                        The College of Teacher Education is the center
+                        of excellence in pre-service and in-service
+                        teacher training programs.
+                    </p>
+
+                    <button class="primary-btn">
+                        View Building
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+<script>
+const buildings = {
+
+    cte:{
+        title:"College of Teacher Education",
+        shortName:"CTE",
+        desc:"The College of Teacher Education is the center of excellence in pre-service and in-service teacher training programs.",
+        img:"../assets/images/CTE.png",
+        campus:"Campus A"
+    },
+
+    coe:{
+        title:"College of Engineering",
+        shortName:"COE",
+        desc:"Engineering programs including Civil, Mechanical, Electrical and Chemical Engineering.",
+        img:"../assets/images/coe.png",
+        campus:"Campus A"
+    },
+
+    coe2:{
+        title:"College of Engineering Annex",
+        shortName:"COE Annex",
+        desc:"Extension facility of the College of Engineering.",
+        img:"../assets/images/coe.png",
+        campus:"Campus A"
+    },
+
+    cla:{
+        title:"College of Liberal Arts",
+        shortName:"CLA",
+        desc:"Programs in Social Sciences, Humanities and Communication.",
+        img:"../assets/images/cla.png",
+        campus:"Campus A"
+    },
+
+    claw:{
+        title:"College of Law",
+        shortName:"Law",
+        desc:"Provides rigorous legal education.",
+        img:"../assets/images/law.png",
+        campus:"Campus A"
+    },
+
+    cpads:{
+        title:"College of Public Administration and Development Studies",
+        shortName:"CPADS",
+        desc:"Focuses on governance and public service.",
+        img:"../assets/images/cpads.png",
+        campus:"Campus A"
+    },
+
+    elem:{
+        title:"Elementary School & Principal's Office",
+        shortName:"Elementary",
+        desc:"Laboratory elementary school for teacher education.",
+        img:"../assets/images/elem.png",
+        campus:"Campus A"
+    },
+
+    research:{
+        title:"Research Building",
+        shortName:"Research",
+        desc:"Research laboratories and research offices.",
+        img:"../assets/images/research.png",
+        campus:"Campus A"
+    },
+
+    library:{
+        title:"University Library",
+        shortName:"Library",
+        desc:"Main university library with books and digital resources.",
+        img:"../assets/images/library.png",
+        campus:"Campus A"
+    },
+
+    gymnasium:{
+        title:"Gymnasium",
+        shortName:"Gymnasium",
+        desc:"Venue for sports events and assemblies.",
+        img:"../assets/images/gymnasium.png",
+        campus:"Campus A"
+    },
+
+    coveredcourt:{
+        title:"Covered Court",
+        shortName:"Covered Court",
+        desc:"Multi-purpose sports court.",
+        img:"../assets/images/coveredcourt.png",
+        campus:"Campus A"
+    },
+
+    auditorium:{
+        title:"University Auditorium",
+        shortName:"Auditorium",
+        desc:"Venue for university events and ceremonies.",
+        img:"../assets/images/auditorium.png",
+        campus:"Campus A"
+    },
+
+    canteen:{
+        title:"University Canteen",
+        shortName:"Canteen",
+        desc:"Food facility for students and staff.",
+        img:"../assets/images/canteen.png",
+        campus:"Campus A"
+    },
+
+    admin:{
+        title:"Administration Building",
+        shortName:"Admin",
+        desc:"Main administrative offices of WMSU.",
+        img:"../assets/images/admin.png",
+        campus:"Campus A"
+    },
+
+    misto:{
+        title:"MISTO",
+        shortName:"MISTO",
+        desc:"Handles ICT infrastructure and systems.",
+        img:"../assets/images/misto.png",
+        campus:"Campus A"
+    },
+
+    upres:{
+        title:"UPRESS",
+        shortName:"UPRESS",
+        desc:"University publication and printing office.",
+        img:"../assets/images/upress.png",
+        campus:"Campus A"
+    },
+
+    landbank:{
+        title:"Landbank",
+        shortName:"Landbank",
+        desc:"On-campus banking services.",
+        img:"../assets/images/landbank.png",
+        campus:"Campus A"
+    },
+
+    storage:{
+        title:"Storage Building",
+        shortName:"Storage",
+        desc:"Storage facility for university offices.",
+        img:"../assets/images/storage.png",
+        campus:"Campus A"
+    },
+
+    property:{
+        title:"Property Management Office",
+        shortName:"Property Office",
+        desc:"Handles university assets and inventory.",
+        img:"../assets/images/property.png",
+        campus:"Campus A"
+    },
+
+    carpentry:{
+        title:"Carpentry Shop",
+        shortName:"Carpentry",
+        desc:"Maintenance and furniture fabrication workshop.",
+        img:"../assets/images/carpentry.png",
+        campus:"Campus A"
+    },
+
+    gate2:{
+        title:"Gate 2",
+        shortName:"Gate 2",
+        desc:"Secondary entrance gate.",
+        img:"../assets/images/gate2.png",
+        campus:"Campus A"
+    },
+
+    gate4:{
+        title:"Gate 4",
+        shortName:"Gate 4",
+        desc:"Northern gate access.",
+        img:"../assets/images/gate4.png",
+        campus:"Campus A"
+    },
+
+    gate5:{
+        title:"Gate 5",
+        shortName:"Gate 5",
+        desc:"Alternate campus entrance.",
+        img:"../assets/images/gate5.png",
+        campus:"Campus A"
+    },
+
+    ccs:{
+        title:"College of Computing Studies",
+        shortName:"CCS",
+        desc:"Center of technology and innovation.",
+        img:"../assets/images/ccs.png",
+        campus:"Campus B"
+    },
+
+    csm:{
+        title:"College of Science and Mathematics",
+        shortName:"CSM",
+        desc:"Science and mathematics programs.",
+        img:"../assets/images/csm.png",
+        campus:"Campus B"
+    },
+
+    canteenB:{
+        title:"University Canteen (Campus B)",
+        shortName:"Canteen B",
+        desc:"Food facility for Campus B.",
+        img:"../assets/images/canteen.png",
+        campus:"Campus B"
+    }
+};
+
+let selectedCampus = "Campus A";
+
+function showStage(n){
+
+    document.querySelectorAll('.stage')
+    .forEach(stage => {
+        stage.classList.remove('active');
+    });
+
+    document.getElementById(`stage-${n}`)
+    .classList.add('active');
+
+    if(n === 2){
+        document.getElementById('directory-search').value = '';
+        renderDirectory('');
+    }
+}
+
+function selectCampus(campus){
+
+    selectedCampus = campus;
+
+    document.getElementById('selected-campus-title')
+    .innerText = `${campus} Directory`;
+
+    showStage(2);
+}
+
+function renderDirectory(filter){
+
+    const query = (filter || '').toLowerCase().trim();
+
+    const list = document.getElementById('directory-list');
+
+    list.innerHTML = '';
+
+    let hasResults = false;
+
+    Object.keys(buildings).forEach(id => {
+
+        const b = buildings[id];
+
+        if(b.campus !== selectedCampus) return;
+
+        const matches =
+            !query ||
+            b.title.toLowerCase().includes(query) ||
+            b.shortName.toLowerCase().includes(query);
+
+        if(!matches) return;
+
+        hasResults = true;
+
+        const card = document.createElement('div');
+
+        card.className = 'card';
+
+        card.innerHTML = `
+            <img src="${b.img}" 
+                 onerror="this.src='https://via.placeholder.com/60'">
+
+            <div class="card-text">
+                <h4>${b.title}</h4>
+                <p>${b.shortName}</p>
+            </div>
+        `;
+
+        card.onclick = () => showPreview(id);
+
+        list.appendChild(card);
+    });
+
+    if(!hasResults){
+        list.innerHTML = `<p style="padding:16px;color:#888;font-size:13px;">No results for "${filter}"</p>`;
+    }
+}
+
+// STAGE 2 — directory search (live filter)
+document.getElementById('directory-search')
+.addEventListener('input', function () {
+
+    renderDirectory(this.value);
+
+});
+
+function showPreview(id){
+
+    const b = buildings[id];
+
+    document.getElementById('building-detail-card')
+    .classList.remove('hidden');
+
+    document.getElementById('detail-img-wrap').innerHTML = `
+        <img src="${b.img}" 
+             onerror="this.src='https://via.placeholder.com/150'">
+    `;
+
+    document.getElementById('detail-name').innerText =
+    b.title;
+
+    document.getElementById('detail-desc').innerText =
+    b.desc;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMSU Navigator | Register</title>
+    <link rel="stylesheet" href="../assets/css/Fillout-Form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="split-screen">
+        <div class="left-side">
+            <img src="../assets/images/CTE.png" alt="WMSU Campus" class="bg-img">
+            <div class="overlay"></div>
+            <div class="content-left">
+                <div class="logo">WMSU <span>NAVIGATOR</span></div>
+                <div class="hero-promo">
+                    <p class="tagline">Join for Free</p>
+                    <h1>Unleash the <span>Navigator</span> inside YOU</h1>
+                    <p class="subtext">Access real-time campus highlights and detailed maps — all in one place.</p>
+                </div>
+                <div class="cta-mini">
+                    <a href="../index.html" class="btn-mini-outline">Explore More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="form-wrapper">
+                <h2>Create <br>new account<span>.</span></h2>
+                <p class="back-link"><a href="../index.html">← Back To Landing Page</a></p>
+                
+                <form action="WMSU-Map-Navigator.html" method="POST" id="registrationForm">
+                    <div class="input-box">
+                        <input type="text" placeholder="First Name" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Middle Name">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Last Name" required>
+                        <i class="fas fa-id-card"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="email" id="email-field" placeholder="Email Address" required>
+                        <i class="fas fa-envelope"></i>
+                        <small id="email-hint" style="color: var(--text-gray); font-size: 0.7rem; display: none; margin-top: 5px;">
+                            Students must use @wmsu.edu.ph
+                        </small>
+                    </div>
+
+                    <div class="role-selector">
+                        <input type="radio" name="user-role" id="student-role" checked>
+                        <label for="student-role">Student</label>
+                        <input type="radio" name="user-role" id="visitor-role">
+                        <label for="visitor-role">Visitor</label>
+                    </div>
+
+                    <!-- Student specific field -->
+                    <div id="student-fields">
+                        <div class="input-box" id="student-id-field">
+                            <input type="text" name="student_id" placeholder="Student ID (e.g. 2023-01234)">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="input-box" id="student-id-photo-field">
+                            <label style="color: white; font-size: 0.75rem; margin-bottom: 5px; display: block;">Upload Student ID Photo</label>
+                            <input type="file" name="student_id_photo" accept="image/*" style="padding-top: 5px;">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <!-- Visitor specific fields (Hidden by default) -->
+                    <div id="visitor-fields" style="display: none;">
+                        <div class="input-box">
+                            <textarea name="access_purpose" placeholder="State your purpose of visit/access..." style="width: 100%; background: var(--input-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: white; padding: 10px; min-height: 80px; font-size: 0.9rem; margin-bottom: 15px;"></textarea>
+                        </div>
+                        <div class="input-box" id="visitor-id-field">
+                            <label style="color: white; font-size: 0.75rem; margin-bottom: 5px; display: block;">Upload Valid ID Photo</label>
+                            <input type="file" name="valid_id_photo" accept="image/*" style="padding-top: 5px;">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" required>
+                        <i class="fas fa-lock"></i>
+                    </div>
+
+                    <div class="options-row" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px;">
+                        <input type="checkbox" id="security-agree" required style="margin-top: 4px; accent-color: var(--crimson);">
+                        <label for="security-agree" style="color: var(--text-gray); font-size: 0.8rem; line-height: 1.4;">I agree to the <span id="open-terms-modal" style="cursor: pointer; text-decoration: underline; font-weight: bold;">Campus Safety Protocol</span>. I understand that this map is for navigation only and any malicious intent will be reported.
+                            I agree to the <b>Campus Safety Protocol</b>. I understand that this map is for navigation only and any malicious intent will be reported.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Create Account</button>
+                    <p class="login-footer">Already a member? <a href="../index.html">Log In</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Use Modal -->
+    <div id="terms-modal" class="terms-modal">
+        <div class="terms-modal-content">
+            <div class="terms-modal-header">
+                <h2>Campus Safety Protocol</h2>
+                <span class="close-terms-modal">&times;</span>
+            </div>
+            <div class="terms-modal-body">
+                <h3>1. Purpose of Use</h3>
+                <p>The WMSU Map Navigator is provided solely for the purpose of legitimate navigation and exploration of the Western Mindanao State University campus. It is intended to assist students, faculty, staff, and visitors in locating buildings, facilities, and points of interest within the university grounds.</p>
+
+                <h3>2. Prohibited Activities</h3>
+                <p>Users are strictly prohibited from using this map system for any unlawful, unauthorized, or malicious purposes, including but not limited to:</p>
+                <ul>
+                    <li>Planning or facilitating illegal activities, including acts of terrorism, vandalism, or any form of criminal behavior.</li>
+                    <li>Unauthorized data scraping, collection, or distribution of sensitive information about campus infrastructure or personnel.</li>
+                    <li>Attempting to gain unauthorized access to university systems or restricted areas.</li>
+                    <li>Harassment, intimidation, or any actions that threaten the safety and security of individuals or property on campus.</li>
+                    <li>Disrupting the normal operations of the university or its digital services.</li>
+                </ul>
+
+                <h3>3. Data Privacy</h3>
+                <p>By using this service, you agree to the collection and processing of your registration data (name, email, role, and for visitors, purpose of access and ID photo) for account management, security monitoring, and to ensure compliance with university policies. Your data will be handled in accordance with WMSU's privacy policy and applicable data protection laws.</p>
+
+                <h3>4. Consequences of Misuse</h3>
+                <p>Any detected misuse or violation of these protocols will result in immediate account termination. Furthermore, WMSU reserves the right to report any suspicious or malicious activities to campus security, local law enforcement agencies, and other relevant authorities. Users found to be in violation may face legal prosecution and/or disciplinary action by the university.</p>
+
+                <h3>5. Agreement</h3>
+                <p>By checking the "I agree to the Campus Safety Protocol" box and creating an account, you acknowledge that you have read, understood, and agree to abide by these terms and conditions. Your continued use of the WMSU Map Navigator signifies your acceptance of these protocols.</p>
+            </div>
+            <div class="terms-modal-footer">
+                <button class="btn-primary close-terms-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const studentRole = document.getElementById('student-role');
+        const visitorRole = document.getElementById('visitor-role');
+        const studentFieldsContainer = document.getElementById('student-fields');
+        const visitorField = document.getElementById('visitor-id-field');
+        const visitorFieldsContainer = document.getElementById('visitor-fields');
+        const emailField = document.getElementById('email-field');
+        const emailHint = document.getElementById('email-hint');
+        const form = document.getElementById('registrationForm');
+
+        // Modal elements
+        const openTermsModalBtn = document.getElementById('open-terms-modal');
+        const termsModal = document.getElementById('terms-modal');
+        const closeTermsModalBtns = document.querySelectorAll('.close-terms-modal');
+
+        function updateFields() {
+            if (visitorRole.checked) {
+                studentFieldsContainer.style.display = 'none';
+                visitorFieldsContainer.style.display = 'block';
+            } else {
+                studentFieldsContainer.style.display = 'block';
+                visitorFieldsContainer.style.display = 'none';
+            }
+        }
+        
+        // Initial call to set correct field visibility
+        updateFields();
+
+        studentRole.addEventListener('change', updateFields);
+        visitorRole.addEventListener('change', updateFields);
+
+        // Domain Validation Logic
+        form.addEventListener('submit', (e) => {
+            if (studentRole.checked) {
+                const email = emailField.value.toLowerCase();
+                if (!email.endsWith('@wmsu.edu.ph')) {
+                    e.preventDefault();
+                    alert("Error: Students must register with their official WMSU email address.");
+                    emailField.style.borderColor = "var(--crimson)";
+                }
+            }
+            
+            const securityCheck = document.getElementById('security-agree');
+            if (!securityCheck.checked) {
+                e.preventDefault();
+                alert("You must agree to the Campus Safety Protocol to continue.");
+            }
+        });
+
+        // Modal Logic
+        openTermsModalBtn.addEventListener('click', () => {
+            termsModal.style.display = 'flex'; // Use flex to center content
+        });
+
+        closeTermsModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                termsModal.style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === termsModal) {
+                termsModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -106,6 +106,18 @@
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            // Update Navbar and Hero buttons to skip login if already authenticated
+            const loginLinks = document.querySelectorAll('a[href="../html/Login-Page.html"]');
+            loginLinks.forEach(link => {
+                const isBtn = link.classList.contains('btn');
+                link.textContent = isBtn ? 'Continue to Map' : 'Map';
+                link.href = '../html/WMSU-Map-Navigator.html';
+            });
+        }
+    });
+
     const buildings = [
         { name: "Interactive Campus Map", desc: "A high-fidelity digital overview of the WMSU campus, designed for seamless navigation and discovery.", img: "../assets/images/Map1.png", link: "map" },
         { name: "College of Teacher Education", desc: "A modern facility providing vast resources for all WMSU students.", img: "../assets/images/CTE.png", link: "college-of-teachers-education" },

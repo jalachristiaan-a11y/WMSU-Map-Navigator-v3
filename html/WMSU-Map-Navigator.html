@@ -13,6 +13,21 @@
 
 <body>
 
+<!-- UI LOCATION POPUP -->
+<div class="location-popup-overlay" id="location-popup">
+    <div class="location-popup">
+        <div class="loc-icon">
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <h2>Allow "WMSU Navigator" to access your location?</h2>
+        <p>Your location is used to show your current position on the map and provide accurate walking directions to campus buildings.</p>
+        <div class="loc-btns">
+            <button class="loc-btn-allow" onclick="closeLocPopup()">Allow While Using App</button>
+            <button class="loc-btn-deny" onclick="closeLocPopup()">Don't Allow</button>
+        </div>
+    </div>
+</div>
+
 <header class="navbar">
     <div class="nav-container">
         <div class="logo" onclick="window.location.href='../index.html'">
@@ -26,7 +41,7 @@
                 <li><button onclick="showStage(2)">Map</button></li>
                 <li><a href="../index.html#how-to-use">Tutorial</a></li>
                 <li><a href="Admin-Login-Page.html">Admin</a></li>
-                <li><a href="../index.html">Logout</a></li>
+                <li><a href="#" onclick="logout(); return false;">Logout</a></li>
             </ul>
         </nav>
 
@@ -89,7 +104,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="directory-search" placeholder="Search building...">
             </div>
-              <button class="primary-btn" onclick="window.location.href='Buildings-Directory.html'" style="width:100%; margin-bottom:15px; background: var(--text); font-size: 0.8rem;">
+             <button class="primary-btn" onclick="window.location.href='../html/Building-Directory.html'" style="width:100%; margin-bottom:15px; background: var(--text); font-size: 0.8rem;">
                 <i class="fa-solid fa-list-ul" style="margin-right: 8px;"></i>
                 View All Buildings
             </button>
@@ -409,6 +424,17 @@ const buildings = {
     }
 };
 
+function logout() {
+    
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = '../index.html';
+}
+
+// Security Check: Immediately redirect to login if no session is found
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+    window.location.href = 'Login-Page.html';
+}
+
 let selectedCampus = "Campus A";
 
 function showStage(n){
@@ -512,7 +538,7 @@ function showPreview(id){
     document.getElementById('detail-desc').innerText =
     b.desc;
 
-    // Logic for "View Building" button
+    // "View Building" 
     const viewBtn = document.getElementById('view-on-map-btn');
     viewBtn.onclick = () => {
         // Scroll the map into view (especially useful on mobile layouts)
@@ -523,6 +549,10 @@ function showPreview(id){
             document.getElementById('main-map-iframe').src = b.mapUrl;
         }
     };
+}
+
+function closeLocPopup() {
+    document.getElementById('location-popup').style.display = 'none';
 }
 </script>
 

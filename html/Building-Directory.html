@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMSU Navigator | Buildings Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #9d0610;
+            --background: #f5f7fb;
+            --text: #1e293b;
+            --muted: #64748b;
+            --white: #ffffff;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--background); color: var(--text); padding: 40px 20px; }
+        .container { max-width: 1200px; margin: auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 2rem; color: var(--primary); }
+        .back-link { text-decoration: none; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        
+        .category-section { margin-bottom: 50px; }
+        .category-title { font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--primary); display: inline-block; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .card-content h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .card-content p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; margin-bottom: 20px; flex: 1; }
+        
+        .copy-btn { 
+            background: #f1f5f9; border: none; padding: 10px; border-radius: 8px; cursor: pointer; 
+            font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s;
+        }
+        .copy-btn:hover { background: var(--primary); color: white; }
+        .copy-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Campus Directory</h1>
+            <a href="WMSU-Map-Navigator.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Map</a>
+        </header>
+
+        <div id="directory-root"></div>
+    </div>
+
+    <script>
+        const buildings = [
+            { title: "College of Teacher Education", type: "Academic", desc: "Trains future educators through innovative pedagogical methods and hands-on classroom simulations to prepare them for professional teaching careers.", img: "../assets/images/CTE.png" },
+            { title: "College of Engineering", type: "Academic", desc: "Equips students with technical expertise in Civil, Mechanical, and Electrical engineering through rigorous laboratory work and design projects.", img: "../assets/images/coe.png" },
+            { title: "College of Computing Studies", type: "Academic", desc: "Develops specialists in software engineering, networking, and data science, focusing on modern coding practices and technological innovation.", img: "../assets/images/ccs.png" },
+            { title: "College of Liberal Arts", type: "Academic", desc: "Cultivates critical thinking and communication skills through the comprehensive study of languages, arts, social sciences, and humanities.", img: "../assets/images/cla.png" },
+            { title: "College of Law", type: "Academic", desc: "Prepares legal professionals by providing intensive training in the Philippine legal system, jurisprudence, and courtroom procedures.", img: "../assets/images/law.png" },
+            { title: "Practical Arts Building", type: "Academic", desc: "Home to Lecture Rooms 3 and 4 (LR 3 & LR 4) for academic sessions. The lower level is a primary site for student enrollment and the processing of official university papers.", img: "../assets/images/pab.png" },
+            { title: "College of Science and Mathematics", type: "Academic", desc: "Advances scientific inquiry and foundational knowledge through research and instruction in biological, physical, and mathematical sciences.", img: "../assets/images/csm.png" },
+            { title: "Administration Building", type: "Administrative", desc: "The executive center of WMSU, housing the President's Office, Registrar, and Finance departments to manage university-wide operations.", img: "../assets/images/admin.png" },
+            { title: "MISTO", type: "Administrative", desc: "The Management Information Systems and Technology Office implements and maintains the university's digital infrastructure and online services.", img: "../assets/images/misto.png" },
+            { title: "Property Management Office", type: "Administrative", desc: "Oversees the procurement of campus resources and ensures the proper maintenance and inventory of all university physical assets.", img: "../assets/images/property.png" },
+            { title: "University Library", type: "Facilities", desc: "A quiet hub for academic research, offering students access to vast physical book collections and subscription-based digital resources.", img: "../assets/images/library.png" },
+            { title: "Gymnasium", type: "Facilities", desc: "Facilitates physical education programs, athletic training for varsity teams, and serves as a venue for large student assemblies.", img: "../assets/images/gymnasium.png" },
+            { title: "University Canteen", type: "Facilities", desc: "Provides balanced meals and serves as a central social space for students and university staff during daily breaks.", img: "../assets/images/canteen.png" },
+            { title: "University Auditorium", type: "Facilities", desc: "The premier location for university-wide events, hosting theatrical performances, conferences, and recognition ceremonies.", img: "../assets/images/auditorium.png" }
+        ];
+
+        const categories = ["Academic", "Administrative", "Facilities"];
+        const root = document.getElementById('directory-root');
+
+        categories.forEach(cat => {
+            const section = document.createElement('section');
+            section.className = 'category-section';
+            
+            const filtered = buildings.filter(b => b.type === cat);
+            if (filtered.length === 0) return;
+
+            section.innerHTML = `
+                <h2 class="category-title">${cat} Buildings</h2>
+                <div class="grid">
+                    ${filtered.map(b => `
+                        <div class="card">
+                            <img src="${b.img}" onerror="this.src='https://via.placeholder.com/300x180?text=No+Image'">
+                            <div class="card-content">
+                                <h3>${b.title}</h3>
+                                <p>${b.desc}</p>
+                                <button class="copy-btn" onclick="copyName('${b.title.replace(/'/g, "\\'")}')">
+                                    <i class="far fa-copy"></i> Copy Name
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            root.appendChild(section);
+        });
+
+        function copyName(name) {
+            navigator.clipboard.writeText(name).then(() => {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.background = '#22c55e';
+                btn.style.color = 'white';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

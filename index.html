@@ -12,6 +12,12 @@
 <header class="navbar">
     <div class="nav-container">
         <h1 class="logo">WMSU Navigator</h1>
+        <input type="checkbox" id="nav-check" hidden>
+        <label for="nav-check" class="nav-toggler">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <nav>
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
@@ -109,5 +115,23 @@
     <p>&copy; 2026 WMSU Map Navigator. All rights reserved.</p>
 </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check if the user is already authenticated
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        
+        if (isLoggedIn) {
+            // Update all buttons/links that originally pointed to the Login or Signup pages
+            const authLinks = document.querySelectorAll('a[href="./html/Login-Page.html"], a[href="./html/Fillout-Form.htm"]');
+            
+            authLinks.forEach(link => {
+                // Change text based on whether it's a navbar link or a button
+                const isBtn = link.classList.contains('btn');
+                link.textContent = isBtn ? 'Return to Map' : 'Enter Map';
+                link.href = './html/WMSU-Map-Navigator.html';
+            });
+        }
+    });
+</script>
 </body>
 </html>

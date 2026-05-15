@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMSU Navigator | Login</title>
-    <link rel="stylesheet" href="../assets/css/Login-Page.css">
+    <link rel="stylesheet" href="../assets/css/login-page.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="split-screen">
        <div class="left-side">
-    <img src="../assets/images/CTE.png" alt="WMSU Campus" class="bg-img">
+    <img src="../assets/images/cte.png" alt="WMSU Campus" class="bg-img">
     <div class="overlay"></div>
     <div class="content-left">
         <div class="logo">WMSU <span>NAVIGATOR</span></div>
@@ -30,7 +30,7 @@
 
                 <div class="tab-container">
                     <span class="tab active">Login</span>
-                    <a href="../html/Fillout-Form.htm" class="tab">Sign Up</a>
+                    <a href="../html/fillout-form.html" class="tab">Sign Up</a>
                 </div>
                 
                 <form method="post">
@@ -58,26 +58,26 @@
                         <label for="keep-logged">Keep me logged in</label>
                     </div>
 
-                    <button type="submit" id="loginButton" class="btn-primary"><a href="wmsu-map-navigator.html">Login</a></button>
                     
                     <div class="form-footer">
-                        <p>Don't have an account? <a href="../html/Fillout-Form.htm">Create Account</a></p>
+                        <p>Don't have an account? <a href="../html/fillout-form.html">Create Account</a></p>
                         <p><a href="../index.html" class="back-link">← Back To Landing Page</a></p>
 
                     </div>
                 </form>
+                <button id="loginButton" class="btn-primary">Login</button>
+
                 <footer class="legal-footer">Copyright © 2026 Ian Lim.</footer>
             </div>
         </div>
     </div>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.prevenrDefault();
+        document.querySelector('#loginButton').addEventListener('click', function(e) {
+            e.preventDefault();
             // Simulate a session by setting a flag in local storage
             localStorage.setItem('isLoggedIn', 'true');
-
-            window.location.href="wmsu_map_navigator.html";
+            window.location.href="wmsu-map-navigator.html";
         });
     </script>
 </body>

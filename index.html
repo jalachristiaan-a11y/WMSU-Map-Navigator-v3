@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WMSU Map Navigator | Landing Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/Landing-Page.css" />
+    <link rel="stylesheet" href="./assets/css/landing-page.css" />
 </head>
 <body>
 
@@ -21,11 +21,11 @@
         <nav>
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="./html/Preview.html">Preview</a></li>
+                <li><a href="./html/preview.html">Preview</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="./html/Login-Page.html">Login</a></li>
-                <li><a href="./html/Contacts.html">Contact</a></li>
+                <li><a href="./html/login-page.html">Login</a></li>
+                <li><a href="./html/contacts.html">Contact</a></li>
             </ul>
         </nav>
     </div>
@@ -37,7 +37,7 @@
         <h1>Better Campus <br><span>Navigation Experiences</span></h1>
         <p>Western Mindanao State University's official campus map system. Find buildings, offices, and get real-time directions — all in one place.</p>
         <div class="hero-btns">
-            <a href="./html/Login-Page.html" class="btn btn-red">Get Started</a>
+            <a href="./html/login-page.html" class="btn btn-red">Get Started</a>
             <a href="#about" class="btn btn-outline">Learn More</a>
         </div>
     </div>
@@ -47,7 +47,7 @@
     <div class="bar-content">
         <h2>Navigate with Confidence</h2>
         <p>Effortlessly explore the WMSU campus with our new digital interactive tool.</p>
-        <a href="./html/Fillout-Form.htm" class="btn btn-white">Get Started</a>
+        <a href="./html/fillout-form.html" class="btn btn-white">Get Started</a>
     </div>
 </section>
 
@@ -122,13 +122,13 @@
         
         if (isLoggedIn) {
             // Update all buttons/links that originally pointed to the Login or Signup pages
-            const authLinks = document.querySelectorAll('a[href="./html/Login-Page.html"], a[href="./html/Fillout-Form.htm"]');
+            const authLinks = document.querySelectorAll('a[href="./html/login-page.html"], a[href="./html/fillout-form.html"]');
             
             authLinks.forEach(link => {
                 // Change text based on whether it's a navbar link or a button
                 const isBtn = link.classList.contains('btn');
                 link.textContent = isBtn ? 'Return to Map' : 'Enter Map';
-                link.href = './html/WMSU-Map-Navigator.html';
+                link.href = './html/wmsu-map-navigator.html';
             });
         }
     });

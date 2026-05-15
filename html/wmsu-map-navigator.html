@@ -8,7 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../assets/css/WMSU-Map-Navigator.css">
+<link rel="stylesheet" href="../assets/css/wmsu-map-navigator.css">
 </head>
 
 <body>
@@ -37,10 +37,10 @@
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../html/Preview.html">Preview</a></li>
+                <li><a href="../html/preview.html">Preview</a></li>
                 <li><button onclick="showStage(2)">Map</button></li>
                 <li><a href="../index.html#how-to-use">Tutorial</a></li>
-                <li><a href="Admin-Login-Page.html">Admin</a></li>
+                <li><a href="admin-login-page.html">Admin</a></li>
                 <li><a href="#" onclick="logout(); return false;">Logout</a></li>
             </ul>
         </nav>
@@ -66,7 +66,7 @@
     <div class="campus-grid">
 
         <div class="campus-card" onclick="selectCampus('Campus A')">
-            <img src="../assets/images/A.png">
+            <img src="../assets/images/a.png">
             <div class="campus-overlay">
                 <h2>Campus A</h2>
                 <p>Main Campus</p>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="campus-card" onclick="selectCampus('Campus B')">
-            <img src="../assets/images/B.png">
+            <img src="../assets/images/b.png">
             <div class="campus-overlay">
                 <h2>Campus B</h2>
                 <p>Technology Campus</p>
@@ -104,7 +104,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="directory-search" placeholder="Search building...">
             </div>
-             <button class="primary-btn" onclick="window.location.href='../html/Building-Directory.html'" style="width:100%; margin-bottom:15px; background: var(--text); font-size: 0.8rem;">
+             <button class="primary-btn" onclick="window.location.href='../html/building-directory.html'" style="width:100%; margin-bottom:15px; background: var(--text); font-size: 0.8rem;">
                 <i class="fa-solid fa-list-ul" style="margin-right: 8px;"></i>
                 View All Buildings
             </button>
@@ -132,7 +132,7 @@
             <div id="building-detail-card" class="detail-card hidden">
 
                 <div class="detail-img-wrap" id="detail-img-wrap">
-                    <img src="../assets/images/CTE.png">
+                    <img src="../assets/images/cte.png">
                 </div>
 
                 <div class="detail-info">
@@ -166,7 +166,7 @@ const buildings = {
         title:"College of Teacher Education",
         shortName:"CTE",
         desc:"The College of Teacher Education is the center of excellence in pre-service and in-service teacher training programs.",
-        img:"../assets/images/CTE.png",
+        img:"../assets/images/cte.png",
         campus:"Campus A",
         mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
@@ -391,7 +391,7 @@ const buildings = {
         title:"College of Asian and Islamic Studies",
         shortName:"Islamic Studies",
         desc:"Academic programs exploring Asian cultures and Islamic education.",
-        img:"../assets/images/B.png",
+        img:"../assets/images/b.png",
         campus:"Campus B",
         mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
@@ -400,7 +400,7 @@ const buildings = {
         title:"Integrated Laboratory School (High School)",
         shortName:"ILS Building",
         desc:"The secondary education laboratory school of the university.",
-        img:"../assets/images/B.png",
+        img:"../assets/images/b.png",
         campus:"Campus B",
         mapUrl: "https://app.mappedin.com/map/69f69fcd441acd000b7c2d23"
     },
@@ -432,7 +432,7 @@ function logout() {
 
 // Security Check: Immediately redirect to login if no session is found
 if (localStorage.getItem('isLoggedIn') !== 'true') {
-    window.location.href = 'Login-Page.html';
+    window.location.href = 'login-page.html';
 }
 
 let selectedCampus = "Campus A";

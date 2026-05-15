@@ -103,7 +103,7 @@ nav button{
 .hero-simple{
     text-align:center;
     padding:140px 20px 80px;
-    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('../images/CTE.png') center/cover;
+    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('../images/cte.png') center/cover;
     color:white;
     margin-top:-100px;
 }

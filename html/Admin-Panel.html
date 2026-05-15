@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMSU Map Admin Panel</title>
-    <link rel="stylesheet" href="../assets/css/Admin.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -60,11 +60,11 @@
                 <li><a href="#people"><i class="fas fa-users"></i> Manage People</a></li>
                 <li><a href="#notifications"><i class="fas fa-bell"></i> Notifications <span id="notif-badge" class="notif-badge">0</span></a></li> 
                 <li><a href="#deleted-items"><i class="fas fa-trash-alt"></i> Recently Deleted</a></li>
-                <li id="super-admin-login-link"><a href="Super-Admin-Login-Page.html" style="color: var(--accent-gold);"><i class="fas fa-user-shield"></i> Log in as Super Admin</a></li>
+                <li id="super-admin-login-link"><a href="super-admin-login-page.html" style="color: var(--accent-gold);"><i class="fas fa-user-shield"></i> Log in as Super Admin</a></li>
                 <li id="super-admin-section-link" style="display: none;"><a href="#system-control" style="color: var(--accent-gold);"><i class="fas fa-shield-alt"></i> System Control</a></li>
                 <li><hr style="border: 0.5px solid #333; margin: 15px 0;"></li>
                 <li><a href="../index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></li>
-                <li><a href="Admin-Login-Page.html"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                <li><a href="admin-login-page.html"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
             </ul>
         </nav>
 
@@ -363,7 +363,7 @@
 
     <script>
         // --- Role Simulation Logic ---
-        // Check URL for role parameter (e.g., Admin-Panel.html?role=super_admin)
+        // Check URL for role parameter (e.g., admin-panel.html?role=super_admin)
         const urlParams = new URLSearchParams(window.location.search);
         let currentUserRole = urlParams.get('role') || 'admin'; // Default to 'admin' if no role specified
         
